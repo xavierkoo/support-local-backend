@@ -1,21 +1,13 @@
-const express = require('express')
-const app = express()
-const cors = require('cors')
+// imports application and http to run server
+const http = require('http');
+const app = require('./app');
+const config = require('./utils/config');
+const logger = require('./utils/logger');
 
-app.use(cors())
-app.use(express.json())
+// create http server
+const server = http.createServer(app);
 
-app.get('/', (request, response) => {
-  response.send('<h1>Hello World!</h1>')
-})
-
-app.get('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const note = notes.find(note => note.id === id)
-  response.json(note)
-})
-
-
-const PORT = 3001
-app.listen(PORT)
-console.log(`Server running on port ${PORT}`)
+// use info to log
+server.listen(config.PORT, () => {
+    logger.info(`Server running on port ${config.PORT}`);
+});
