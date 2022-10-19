@@ -6,7 +6,11 @@ const config = require('./utils/config');
 
 const app = express();
 
-// const notesRouter = require('./controllers/notes')
+// import controllers
+const merchantsRouter = require('./controllers/merchants');
+const usersRouter = require('./controllers/users');
+const reviewsRouter = require('./controllers/reviews');
+// const loginRouter = require('./controllers/login');
 const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
 
@@ -26,7 +30,11 @@ app.use(express.static('build'));
 app.use(express.json());
 app.use(middleware.requestLogger);
 
-// app.use('/api/notes', notesRouter);
+// use routers
+app.use('/api/users', usersRouter);
+app.use('/api/merchants', merchantsRouter);
+app.use('/api/reviews', reviewsRouter);
+// app.use('/api/login', loginRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
