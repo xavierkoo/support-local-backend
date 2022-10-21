@@ -9,6 +9,11 @@ const merchantSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
+    merchantID: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     imgUrl: {
         type: String,
         minlength: 3,
@@ -28,15 +33,38 @@ const merchantSchema = mongoose.Schema({
         minlength: 8,
         required: true,
     },
-    products: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Product',
+    lastOnline: {
+        type: Number,
+        required: true,
     },
-    reviews: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Review',
+    products: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
+        },
+    ],
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Review',
+        },
+    ],
+    /* password: {
+        type: 'String',
+        required: true,
+        unique: true,
+    }, */
+});
+
+merchantSchema.set('toJSON', {
+    transform: (document, returnedObject) => {
+        returnedObject.id = returnedObject._id.toString();
+        delete returnedObject._id;
+        delete returnedObject.__v;
+        delete returnedObject.passwordHash;
     },
 });
+
 merchantSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Merchant', merchantSchema);

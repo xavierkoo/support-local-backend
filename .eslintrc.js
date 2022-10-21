@@ -6,6 +6,7 @@ module.exports = {
     },
     extends: 'airbnb-base',
     overrides: [
+
     ],
     parserOptions: {
         ecmaVersion: 'latest',
@@ -15,5 +16,6 @@ module.exports = {
             'error',
             4,
         ],
+        'no-underscore-dangle': 'off',
     },
 };
