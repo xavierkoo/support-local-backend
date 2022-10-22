@@ -20,6 +20,10 @@ const productSchema = mongoose.Schema({
     specialPrice: {
         type: Number,
     },
+    category: {
+        type: 'String',
+        required: true,
+    },
     imgUrl: {
         type: String,
         minlength: 3,
