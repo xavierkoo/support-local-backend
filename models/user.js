@@ -31,6 +31,10 @@ const userSchema = mongoose.Schema({
             ref: 'Review',
         },
     ],
+    shoppingCart:
+        {
+            type: Array,
+        },
 });
 
 userSchema.set('toJSON', {

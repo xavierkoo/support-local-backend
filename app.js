@@ -16,7 +16,9 @@ const logger = require('./utils/logger');
 
 logger.info('connecting to', config.MONGODB_URI);
 
-// connect to mongodb
+// connect to mongodb file .env has been gitignored, for Heroku deployment
+// set mongodb URI from dashboard
+
 mongoose.connect(config.MONGODB_URI)
     .then(() => {
         logger.info('connected to MongoDB');
