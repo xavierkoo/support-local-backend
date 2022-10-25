@@ -31,10 +31,12 @@ const userSchema = mongoose.Schema({
             ref: 'Review',
         },
     ],
-    shoppingCart:
+    shoppingCart: [
         {
-            type: Array,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Product',
         },
+    ],
 });
 
 userSchema.set('toJSON', {
