@@ -21,11 +21,13 @@ const reviewSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Merchant',
     },
-    imageUrl: {
+    profImageUrl: {
         type: 'String',
     },
     rating: {
         type: Number,
+        min: 1,
+        max: 5,
         required: true,
     },
     orderDetails: {

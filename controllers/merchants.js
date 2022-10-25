@@ -3,7 +3,8 @@ const Merchant = require('../models/merchant');
 const logger = require('../utils/logger');
 
 merchantsRouter.get('/', async (request, response) => {
-    const merchants = await Merchant;
+    const merchants = await Merchant
+        .find({}).populate('products');
     if (merchants) {
         response.json(merchants);
     } else {

@@ -9,7 +9,7 @@ const merchantSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
-    merchantID: {
+    merchantId: {
         type: Number,
         required: true,
         unique: true,
@@ -31,7 +31,6 @@ const merchantSchema = mongoose.Schema({
     email: {
         type: String,
         minlength: 8,
-        required: true,
     },
     lastOnline: {
         type: Number,
