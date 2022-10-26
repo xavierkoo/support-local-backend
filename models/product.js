@@ -24,6 +24,12 @@ const productSchema = mongoose.Schema({
         type: 'String',
         required: true,
     },
+    rating: {
+        type: Number,
+        min: 1,
+        max: 5,
+        required: true,
+    },
     imgUrl: {
         type: String,
         minlength: 3,
