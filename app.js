@@ -7,7 +7,7 @@ const config = require('./utils/config');
 const app = express();
 
 // import controllers
-const merchantsRouter = require('./controllers/merchants');
+const merchRouter = require('./controllers/merchants');
 const usersRouter = require('./controllers/users');
 const reviewsRouter = require('./controllers/reviews');
 const productsRouter = require('./controllers/products');
