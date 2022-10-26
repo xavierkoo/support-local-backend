@@ -31,12 +31,9 @@ const userSchema = mongoose.Schema({
             ref: 'Review',
         },
     ],
-    shoppingCart: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Product',
-        },
-    ],
+    shoppingCart: {
+        type: Array,
+    },
 });
 
 userSchema.set('toJSON', {
