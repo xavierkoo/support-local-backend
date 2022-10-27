@@ -19,6 +19,6 @@ productsRouter.get('/:id', async (request, response) => {
     } else {
         response.status(404).end();
     }
-})
+});
 
 module.exports = productsRouter;
