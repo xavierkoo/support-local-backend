@@ -57,6 +57,6 @@ productSchema.set('toJSON', {
     },
 });
 
-productSchema.plugin(uniqueValidator);
+// productSchema.plugin(uniqueValidator);
 
 module.exports = mongoose.model('Product', productSchema);
