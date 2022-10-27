@@ -8,12 +8,12 @@ const reviewSchema = mongoose.Schema({
         ref: 'User',
     },
     email: {
-        type: 'String',
+        type: String,
         minlength: 8,
         required: true,
     },
     password: {
-        type: 'String',
+        type: String,
         minlength: 8,
         required: true,
     },
@@ -22,7 +22,7 @@ const reviewSchema = mongoose.Schema({
         ref: 'Product',
     },
     profImageUrl: {
-        type: 'String',
+        type: String,
     },
     rating: {
         type: Number,
@@ -31,7 +31,7 @@ const reviewSchema = mongoose.Schema({
         required: true,
     },
     orderDetails: {
-        type: 'String',
+        type: String,
         minlength: 20,
     },
 });
