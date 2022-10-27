@@ -37,12 +37,6 @@ const merchantSchema = mongoose.Schema({
             ref: 'Product',
         },
     ],
-    reviews: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: 'Review',
-        },
-    ],
     /* password: {
         type: 'String',
         required: true,
