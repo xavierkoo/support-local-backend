@@ -17,9 +17,9 @@ const reviewSchema = mongoose.Schema({
         minlength: 8,
         required: true,
     },
-    merchant: {
+    product: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Merchant',
+        ref: 'Product',
     },
     profImageUrl: {
         type: 'String',

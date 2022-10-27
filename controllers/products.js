@@ -12,4 +12,13 @@ productsRouter.get('/', async (request, response) => {
     }
 });
 
+productsRouter.get('/:id', async (request, response) => {
+    const product = await Product.findById(request.params.id);
+    if (product) {
+        response.json(product);
+    } else {
+        response.status(404).end();
+    }
+})
+
 module.exports = productsRouter;

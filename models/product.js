@@ -8,11 +8,6 @@ const productSchema = mongoose.Schema({
         minlength: 3,
         required: true,
     },
-    productId: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     price: {
         type: Number,
         required: true,
@@ -51,6 +46,12 @@ const productSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Merchant',
     },
+    reviews: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Review',
+        },
+    ],
 });
 
 productSchema.set('toJSON', {
