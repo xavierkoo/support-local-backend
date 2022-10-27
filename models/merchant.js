@@ -9,11 +9,6 @@ const merchantSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
-    merchantId: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     imgUrl: {
         type: String,
         minlength: 3,
