@@ -20,6 +20,9 @@ const userSchema = mongoose.Schema({
         minlength: 8,
         unique: true,
     },
+    profImageUrl: {
+        type: String,
+    },
     reviews: [
         {
             type: mongoose.Schema.Types.ObjectId,

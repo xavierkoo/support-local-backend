@@ -7,22 +7,9 @@ const reviewSchema = mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
     },
-    email: {
-        type: String,
-        minlength: 8,
-        required: true,
-    },
-    password: {
-        type: String,
-        minlength: 8,
-        required: true,
-    },
     product: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Product',
-    },
-    profImageUrl: {
-        type: String,
     },
     rating: {
         type: Number,
