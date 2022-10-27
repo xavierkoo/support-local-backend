@@ -8,6 +8,11 @@ const productSchema = mongoose.Schema({
         minlength: 3,
         required: true,
     },
+    productId: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
     price: {
         type: Number,
         required: true,
