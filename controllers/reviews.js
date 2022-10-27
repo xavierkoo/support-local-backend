@@ -4,7 +4,7 @@ const logger = require('../utils/logger');
 
 reviewsRouter.get('/', async (request, response) => {
     const reviews = await Review
-        .find({}).populate('user').populate('merchant');
+        .find({}).populate('user').populate('product');
     if (reviews) {
         response.json(reviews);
     } else {
