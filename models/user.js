@@ -29,6 +29,9 @@ const userSchema = mongoose.Schema({
     shoppingCart: {
         type: Array,
     },
+    orderDetails: {
+        type: Array,
+    },
 });
 
 userSchema.set('toJSON', {
