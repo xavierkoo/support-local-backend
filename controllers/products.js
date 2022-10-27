@@ -4,7 +4,7 @@ const logger = require('../utils/logger');
 
 productsRouter.get('/', async (request, response) => {
     const products = await Product
-        .find({}).populate('merchant');
+        .find({}).populate('merchant').populate('reviews');
     if (products) {
         response.json(products);
     } else {
