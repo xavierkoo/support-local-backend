@@ -12,4 +12,13 @@ reviewsRouter.get('/', async (request, response) => {
     }
 });
 
+reviewsRouter.get('/:id', async (request, response) => {
+    const review = await Review.findById(request.params.id);
+    if (review) {
+        response.json(review);
+    } else {
+        response.status(404).end();
+    }
+});
+
 module.exports = reviewsRouter;

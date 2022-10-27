@@ -12,4 +12,13 @@ merchantsRouter.get('/', async (request, response) => {
     }
 });
 
+merchantsRouter.get('/:id', async (request, response) => {
+    const merchant = await Merchant.findById(request.params.id);
+    if (merchant) {
+        response.json(merchant);
+    } else {
+        response.status(404).end();
+    }
+});
+
 module.exports = merchantsRouter;
