@@ -9,11 +9,6 @@ const userSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
-    userId: {
-        type: Number,
-        required: true,
-        unique: true,
-    },
     email: {
         type: String,
         minlength: 8,
@@ -26,7 +21,7 @@ const userSchema = mongoose.Schema({
         unique: true,
     },
     profImageUrl: {
-        type: 'String',
+        type: String,
     },
     reviews: [
         {
@@ -34,16 +29,12 @@ const userSchema = mongoose.Schema({
             ref: 'Review',
         },
     ],
-    shoppingCart: [
-        {
-            type: Array,
-        },
-    ],
-    orderLog: [
-        {
-            type: Array,
-        },
-    ],
+    shoppingCart: {
+        type: Array,
+    },
+    orderDetails: {
+        type: Array,
+    },
 });
 
 userSchema.set('toJSON', {
