@@ -17,5 +17,6 @@ module.exports = {
             4,
         ],
         'no-underscore-dangle': 'off',
+        'arrow-parens': [true, 'ban-single-arg-parens', 'error', 'as-needed'],
     },
 };
