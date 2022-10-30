@@ -9,6 +9,10 @@ const merchantSchema = mongoose.Schema({
         required: true,
         unique: true,
     },
+    aboutUs: {
+        type: String,
+        required: true,
+    },
     imgUrl: {
         type: String,
         minlength: 3,
@@ -17,6 +21,10 @@ const merchantSchema = mongoose.Schema({
     location: {
         type: String,
         minlength: 3,
+        required: true,
+    },
+    coord: {
+        type: String,
         required: true,
     },
     phoneNo: {
