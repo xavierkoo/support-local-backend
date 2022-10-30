@@ -41,7 +41,7 @@ app.use('/api/merchants', merchantsRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/login', loginRouter);
-app.use('/api/cart', cartsRouter);
+app.use('/api/carts', cartsRouter);
 // app.use('/api/order', ordersRouter);
 
 app.use(middleware.unknownEndpoint);
