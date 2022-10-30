@@ -30,7 +30,8 @@ const userSchema = mongoose.Schema({
         },
     ],
     shoppingCart: {
-        type: Array,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Cart',
     },
     orderDetails: {
         type: Array,
