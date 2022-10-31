@@ -21,4 +21,16 @@ merchantsRouter.get('/:id', async (request, response) => {
     }
 });
 
+// update product in merchant
+merchantsRouter.patch('/:id', async (request, response, next) => {
+    const newProduct = request.body;
+
+    try {
+        const updatedMerchant = await Merchant.findByIdAndUpdate(request.params.id, newProduct, { new: true });
+        return response.status(204).json(updatedMerchant);
+    } catch (exception) {
+        next(exception);
+    }
+});
+
 module.exports = merchantsRouter;

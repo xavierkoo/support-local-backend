@@ -1,3 +1,4 @@
+/* Loading the environment variables from the .env file. */
 require('dotenv').config();
 
 // environment variables for port and mongodb

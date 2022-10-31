@@ -29,10 +29,6 @@ const userSchema = mongoose.Schema({
             ref: 'Review',
         },
     ],
-    shoppingCart: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Cart',
-    },
     orderDetails: [
         {
             type: mongoose.Schema.Types.ObjectId,
