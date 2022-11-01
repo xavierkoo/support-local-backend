@@ -1,3 +1,4 @@
+/* This is the router for the products. It is a router that handles all the requests for the products. */
 const productsRouter = require('express').Router();
 const Product = require('../models/product');
 const logger = require('../utils/logger');
@@ -33,7 +34,7 @@ productsRouter.post('/', async (request, response, next) => {
         imgUrl: body.imgUrl,
         numberSold: body.numberSold,
         productDesc: body.productDesc,
-        productSpec: body.prodcuctSpec,
+        productSpec: body.productSpec,
         merchant: body.merchant,
         reviews: body.reviews,
     });

@@ -1,3 +1,4 @@
+/* This is the product model. It defines the schema for the product collection in the database. */
 const mongoose = require('mongoose');
 // plugin which adds pre-save validation for unique fields within a Mongoose schema.
 const uniqueValidator = require('mongoose-unique-validator');
