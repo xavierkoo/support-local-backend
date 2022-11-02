@@ -2,6 +2,7 @@ const reviewsRouter = require('express').Router();
 const Review = require('../models/review');
 const logger = require('../utils/logger');
 
+// get all reviews
 reviewsRouter.get('/', async (request, response) => {
     const reviews = await Review
         .find({}).populate('user').populate('product');
@@ -12,6 +13,7 @@ reviewsRouter.get('/', async (request, response) => {
     }
 });
 
+// get specific review
 reviewsRouter.get('/:id', async (request, response) => {
     const review = await Review.findById(request.params.id);
     if (review) {
@@ -21,6 +23,7 @@ reviewsRouter.get('/:id', async (request, response) => {
     }
 });
 
+// add new review
 reviewsRouter.post('/', async (request, response, next) => {
     const { body } = request;
 

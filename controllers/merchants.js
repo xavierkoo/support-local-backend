@@ -2,6 +2,7 @@ const merchantsRouter = require('express').Router();
 const Merchant = require('../models/merchant');
 const logger = require('../utils/logger');
 
+// retrieve all merchants
 merchantsRouter.get('/', async (request, response) => {
     const merchants = await Merchant
         .find({}).populate('products');
@@ -12,6 +13,7 @@ merchantsRouter.get('/', async (request, response) => {
     }
 });
 
+// retrieve specific merchant
 merchantsRouter.get('/:id', async (request, response) => {
     const merchant = await Merchant.findById(request.params.id);
     if (merchant) {

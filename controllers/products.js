@@ -3,6 +3,7 @@ const productsRouter = require('express').Router();
 const Product = require('../models/product');
 const logger = require('../utils/logger');
 
+// retrieve all products
 productsRouter.get('/', async (request, response) => {
     const products = await Product
         .find({}).populate('merchant').populate('reviews');
@@ -13,6 +14,7 @@ productsRouter.get('/', async (request, response) => {
     }
 });
 
+// retrieve specific product
 productsRouter.get('/:id', async (request, response) => {
     const product = await Product.findById(request.params.id);
     if (product) {
@@ -22,6 +24,7 @@ productsRouter.get('/:id', async (request, response) => {
     }
 });
 
+// add new product
 productsRouter.post('/', async (request, response, next) => {
     const { body } = request;
 
@@ -47,6 +50,7 @@ productsRouter.post('/', async (request, response, next) => {
     }
 });
 
+// delete a product
 productsRouter.delete('/:id', async (request, response, next) => {
     try {
         await Product.findByIdAndRemove(request.params.id);
@@ -56,11 +60,24 @@ productsRouter.delete('/:id', async (request, response, next) => {
     }
 });
 
+// update specific fields in product
 productsRouter.patch('/:id', async (request, response, next) => {
     const product = request.body;
 
     try {
         const updatedProduct = await Product.findByIdAndUpdate(request.params.id, product, { new: true });
+        response.status(204).json(updatedProduct);
+    } catch (exception) {
+        next(exception);
+    }
+});
+
+// update product with new review
+productsRouter.patch('/:id', async (request, response, next) => {
+    const review = request.body;
+
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(request.params.id, review, { new: true });
         response.status(204).json(updatedProduct);
     } catch (exception) {
         next(exception);
