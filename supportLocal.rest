@@ -29,7 +29,7 @@ PATCH http://localhost:3001/api/products/635c3b4c7d63de93d0c7f795
 Content-Type: application/json
 
 {
-  "products": ["635c3dc47d63de93d0c7f798", "635fb0c7da195a87a8898b80"]
+  "reviews": ["635c3dc47d63de93d0c7f798", "635fb0c7da195a87a8898b80"]
 }
 ###
 POST http://localhost:3001/api/login
