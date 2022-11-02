@@ -11,27 +11,21 @@ Content-Type: application/json
     "password": "sam"
 }
 ###
-POST http://localhost:3001/api/products
+POST http://localhost:3001/api/reviews
 Content-Type: application/json
 
 {
-  "name": "TEST",
-  "price": 38,
-  "specialPrice": 32,
-  "category": "Homeware",
+  "user": "635ac046b01737e727fb4b42",
+  "product": "635b32e07d63de93d0c7f74d",
   "rating": 5,
-  "imgUrl": "assets/img/products/magiccup.png",
-  "numberSold": 30,
-  "productDesc": "Magic, The Legendary Language-Changing Cup is inspired by the drinking cup used by our Prime Minister during his addresses to Singaporeans on several occasions during the Covid19 pandemic. He would take a sip before giving the next address in a different language. In the midst of uncertain times, a little blue cup arise and gave the nation a gentle dose of humour.",
-  "merchant": "635c3b4c7d63de93d0c7f795",
-  "productSpec": ["Porcelain"]
+  "orderDetails": "wiergbiweghnoergjnhierngjqoerjgoqkegjqerg"
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6
 # Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJhcnJ5IiwiaWQiOiI2MmYxMjE5NDlkYTRkYjJhNzdlYzJmYTEiLCJpYXQiOjE2NjA0ODM1NjF9.ILPVKjYy9QzGI7p8gGXOA1hi-rx-_dozQAKxCIV0kCI
 ###
 
-PATCH http://localhost:3001/api/products/635b33bb7d63de93d0c7f75e
+PATCH http://localhost:3001/api/products/635c3b4c7d63de93d0c7f795
 Content-Type: application/json
 
 {

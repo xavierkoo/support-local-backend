@@ -21,4 +21,22 @@ reviewsRouter.get('/:id', async (request, response) => {
     }
 });
 
+reviewsRouter.post('/', async (request, response, next) => {
+    const { body } = request;
+
+    const review = new Review({
+        user: body.user,
+        product: body.product,
+        rating: body.rating,
+        orderDetails: body.orderDetails,
+    });
+    try {
+        const savedReview = await review.save();
+        logger.info(`added review ${review.id} to reviews`);
+        response.status(201).json(savedReview);
+    } catch (exception) {
+        next(exception);
+    }
+});
+
 module.exports = reviewsRouter;

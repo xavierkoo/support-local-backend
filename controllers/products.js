@@ -61,7 +61,7 @@ productsRouter.patch('/:id', async (request, response, next) => {
 
     try {
         const updatedProduct = await Product.findByIdAndUpdate(request.params.id, product, { new: true });
-        return response.status(204).json(updatedProduct);
+        response.status(204).json(updatedProduct);
     } catch (exception) {
         next(exception);
     }
