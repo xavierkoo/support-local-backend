@@ -18,8 +18,8 @@ Content-Type: application/json
   "email": "xavi@gmail.com",
   "password": "123456789",
   "profImageUrl": "assets/profilepng.png",
-  "reviews": "",
-  "orderDetails": ""
+  "reviews": [],
+  "orderDetails": []
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6

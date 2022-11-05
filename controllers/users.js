@@ -37,7 +37,7 @@ usersRouter.post('/', async (request, response, next) => {
     });
     try {
         const savedUser = await user.save();
-        logger.info(`added ${user.username} to products`);
+        logger.info(`added ${user.username} to users`);
         response.status(201).json(savedUser);
     } catch (exception) {
         next(exception);
