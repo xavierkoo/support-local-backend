@@ -24,7 +24,7 @@ npm install
 
 ### Add `.env.local` file and configure database connection
 ```
-MONGODB_URI=mongodb+srv://<DB_USERNAME>:<DB_PASSWORD>@cluster0.zlomb.mongodb.net/<DB_NAME>?retryWrites=true&w=majority
+MONGODB_URI=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
 PORT=3001
 ```
 
