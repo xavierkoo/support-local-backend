@@ -3,6 +3,7 @@
 Support Local is THE one-stop shop for all things local. It compiles all local businesses, and services in an easy-to-use portal and allows them to offer their products and services to customers through the platform.
 
 Main App: https://supportlocal.netlify.app/
+
 Backend hosted on Heroku: https://support-local.herokuapp.com/
 
 Backend Stack: Express, Node.js, MongoDB
