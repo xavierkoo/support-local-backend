@@ -9,15 +9,18 @@ Backend hosted on Heroku: https://support-local.herokuapp.com/
 Backend Stack: Express, Node.js, MongoDB
 
 ## Project setup
-Download project repository to your local directory:
+
+###Download project repository to your local directory:
 ```
 git clone git@github.com:WAD2-T05/support-local-backend.git
 ```
-Open your terminal in local project, and execute:
+
+###Open your terminal in local project, and execute:
 ```
 npm install
 ``` 
-Add `.env.local` file and configure database connection
+
+###Add `.env.local` file and configure database connection
 ```
 MONGODB_URI=mongodb+srv://<DB_USERNAME>:<DB_PASSWORD>@cluster0.zlomb.mongodb.net/<DB_NAME>?retryWrites=true&w=majority
 PORT=3001
