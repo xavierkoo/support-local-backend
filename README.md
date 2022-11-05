@@ -1,6 +1,4 @@
-<p align="center" style="padding: 20px; background: #252832">
-  <img width="300" src=![Nobackgroundlogo](https://user-images.githubusercontent.com/86020207/200137605-83683b3e-c20a-4577-b1f7-a4b5dc00e4c6.png)>
-</p>
+![Nobackgroundlogo](https://user-images.githubusercontent.com/86020207/200137672-672cdcfc-91a6-44f5-8f9f-429660f25143.png)
 
 # Support Local Backend
 
