@@ -1,14 +1,9 @@
+/* This is the user schema. It is defining the user model. */
 const mongoose = require('mongoose');
 // plugin which adds pre-save validation for unique fields within a Mongoose schema.
 const uniqueValidator = require('mongoose-unique-validator');
 
 const userSchema = mongoose.Schema({
-    username: {
-        type: String,
-        minlength: 3,
-        required: true,
-        unique: true,
-    },
     email: {
         type: String,
         minlength: 8,

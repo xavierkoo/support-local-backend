@@ -24,6 +24,26 @@ usersRouter.get('/:id', async (request, response) => {
     }
 });
 
+// add new user to database
+usersRouter.post('/', async (request, response, next) => {
+    const { body } = request;
+
+    const user = new User({
+        email: body.email,
+        password: body.password,
+        profImageUrl: body.profImageUrl,
+        reviews: body.reviews,
+        orderDetails: body.orderDetails,
+    });
+    try {
+        const savedUser = await user.save();
+        logger.info(`added ${user.username} to products`);
+        response.status(201).json(savedUser);
+    } catch (exception) {
+        next(exception);
+    }
+});
+
 // update user with new review
 usersRouter.patch('/:id', async (request, response, next) => {
     const review = request.body;
