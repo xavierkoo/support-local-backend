@@ -13,7 +13,6 @@ const userSchema = mongoose.Schema({
     password: {
         type: String,
         minlength: 8,
-        unique: true,
     },
     profImageUrl: {
         type: String,

@@ -11,14 +11,15 @@ Content-Type: application/json
     "password": "sam"
 }
 ###
-POST http://localhost:3001/api/reviews
+POST http://localhost:3001/api/users
 Content-Type: application/json
 
 {
-  "user": "635ac046b01737e727fb4b42",
-  "product": "635b32e07d63de93d0c7f74d",
-  "rating": 5,
-  "orderDetails": "wiergbiweghnoergjnhierngjqoerjgoqkegjqerg"
+  "email": "xavi@gmail.com",
+  "password": "123456789",
+  "profImageUrl": "assets/profilepng.png",
+  "reviews": "",
+  "orderDetails": ""
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6
