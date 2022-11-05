@@ -1,3 +1,5 @@
+![Nobackgroundlogo](https://user-images.githubusercontent.com/86020207/200137550-190dbd2c-f81b-40cc-8bdb-4750e71845b7.png)
+
 # Support Local Backend
 
 Support Local is THE one-stop shop for all things local. It compiles all local businesses, and services in an easy-to-use portal and allows them to offer their products and services to customers through the platform.
