@@ -13,7 +13,7 @@ const usersRouter = require('./controllers/users');
 const reviewsRouter = require('./controllers/reviews');
 const productsRouter = require('./controllers/products');
 const loginRouter = require('./controllers/login');
-// const ordersRouter = require('./controllers/orders');
+const ordersRouter = require('./controllers/orders');
 const middleware = require('./utils/middleware');
 const logger = require('./utils/logger');
 
@@ -41,7 +41,7 @@ app.use('/api/merchants', merchantsRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/login', loginRouter);
-// app.use('/api/order', ordersRouter);
+app.use('/api/order', ordersRouter);
 
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);

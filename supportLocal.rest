@@ -11,7 +11,7 @@ Content-Type: application/json
     "password": "sam"
 }
 ###
-POST http://localhost:3001/api/users
+POST https://support-local.herokuapp.com/api/users
 Content-Type: application/json
 
 {
