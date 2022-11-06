@@ -8,7 +8,7 @@ Main App Link: https://supportlocal.netlify.app/
 
 Frontend Repository: https://github.com/WAD2-T05/support-local
 
-Backend hosted on Heroku: https://support-local.herokuapp.com/
+API Url: https://support-local.herokuapp.com/
 
 ## Backend Tech Stack 
 * Express
