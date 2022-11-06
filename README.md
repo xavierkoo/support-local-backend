@@ -27,7 +27,7 @@ git clone git@github.com:WAD2-T05/support-local-backend.git
 npm install
 ``` 
 
-### Add `.env.local` file and configure database connection
+### Add `.env` file and configure database connection
 ```
 MONGODB_URI=mongodb://[username:password@]host1[:port1][,...hostN[:portN]][/[defaultauthdb][?options]]
 PORT=3001
