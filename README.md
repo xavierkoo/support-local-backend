@@ -45,4 +45,4 @@ npm run lint
 
 You may make API calls to the server locally via `localhost:3001`.
 
-## Entity-Relationship Diagram
+## Database Entity-Relationship Diagram
