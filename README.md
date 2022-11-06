@@ -6,9 +6,14 @@ Support Local is THE one-stop shop for all things local. It compiles all local b
 
 Main App: https://supportlocal.netlify.app/
 
+Frontend Repository: https://github.com/WAD2-T05/support-local
+
 Backend hosted on Heroku: https://support-local.herokuapp.com/
 
-Backend Stack: Express, Node.js, MongoDB
+## Backend Tech Stack 
+* Express
+* Node.js
+* MongoDB
 
 ## Project setup
 
