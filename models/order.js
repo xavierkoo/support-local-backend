@@ -4,10 +4,6 @@ const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 
 const orderSchema = mongoose.Schema({
-    merchant: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Merchant',
-    },
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
@@ -24,6 +20,9 @@ const orderSchema = mongoose.Schema({
             ref: 'Product',
         },
     ],
+    deliveryDate: {
+        type: String,
+    },
 });
 
 orderSchema.set('toJSON', {
