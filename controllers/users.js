@@ -56,4 +56,15 @@ usersRouter.patch('/:id', async (request, response, next) => {
     }
 });
 
+// update user with new order
+usersRouter.patch('/:id', async (request, response, next) => {
+    const order = request.body;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(request.params.id, order, { new: true });
+        response.status(204).json(updatedUser);
+    } catch (exception) {
+        next(exception);
+    }
+});
 module.exports = usersRouter;

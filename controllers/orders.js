@@ -23,4 +23,24 @@ ordersRouter.get('/:id', async (request, response) => {
     }
 });
 
+// add new order
+ordersRouter.post('/', async (request, response, next) => {
+    const { body } = request;
+
+    const order = new Order({
+        user: body.user,
+        orderDate: body.orderDate,
+        orderStatus: body.orderStatus,
+        products: body.products,
+        deliveryDate: body.deliveryDate,
+    });
+    try {
+        const savedOrder = await order.save();
+        logger.info(`added order ${order.id} to reviews`);
+        response.status(201).json(savedOrder);
+    } catch (exception) {
+        next(exception);
+    }
+});
+
 module.exports = ordersRouter;
