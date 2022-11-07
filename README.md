@@ -46,3 +46,4 @@ npm run lint
 You may make API calls to the server locally via `localhost:3001`.
 
 ## Database Entity-Relationship Diagram
+![mongoERD drawio](https://user-images.githubusercontent.com/86020207/200239460-7354f3b3-3529-4e72-8d0b-128df8d5b604.svg)
