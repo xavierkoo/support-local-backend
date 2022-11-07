@@ -40,4 +40,7 @@ Content-Type: application/json
   "username": "Barry",
   "password": "salainen"
 }
+###
+GET https://support-local.herokuapp.com/api/orders
+Content-Type: application/json
 
