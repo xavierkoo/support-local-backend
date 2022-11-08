@@ -13,11 +13,9 @@ const orderSchema = mongoose.Schema({
     orderStatus: {
         type: String,
     },
-    products: [
-        {
-            type: Array,
-        },
-    ],
+    products: {
+        type: Array,
+    },
     deliveryDate: {
         type: String,
     },

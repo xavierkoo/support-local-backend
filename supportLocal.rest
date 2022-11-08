@@ -17,30 +17,30 @@ POST https://support-local.herokuapp.com/api/products
 Content-Type: application/json
 
 {
-  "name": "Heritage Ear Jacket",
-  "price": 488,
-  "specialPrice": 460,
+  "name": "Coreela Padded Pleated Crop Top",
+  "price": 45,
+  "specialPrice": 40,
   "category": "Women's Apparel",
   "rating": 4,
-  "imgUrl": "assets/img/products/EarJacket.png",
-  "numberSold": 1,
-  "productDesc": "Built with the modern women in mind, our Heritage Ear Jackets can be worn with just the studs, with the jackets, mismatched or the jackets with your own solitaire.",
-  "productSpec": ["Clear Gems"],
-  "merchant": "636a15717d63de93d0c7f931"
+  "imgUrl": "assets/img/products/flaredress.png",
+  "numberSold": 7,
+  "productDesc": "A brunch-to-dinner mainstay to have in your rotation. Made of textured linen, this dress features a fit & flare silhouette and a square neckline. Puffed at the sleeves to channel a romantic air. Comes with functional side pockets and a back zip closure.",
+  "productSpec": ["Textured Linen", "Machine Washable"],
+  "merchant": "636a8f4b7d63de93d0c7f95a"
 }
 ###
 POST https://support-local.herokuapp.com/api/merchants
 Content-Type: application/json
 
 {
-  "name": "Carrie K.",
-  "aboutUs": "Carrie K. creates meaningful and versatile jewellery that lets you bring your story to life. Passionate about story-telling, we translate your journeys into meaningful and modular jewellery that transforms from simple everyday wear to statement pieces for special days. We exist to bring people together through these thoughtful conversation starters, and nurture a positive community through meaningful interactions.",
-  "imgUrl": "assets/img/merchants/carrie.png",
-  "location": "111 Middle Rd, #02-02 National Design Centre, Singapore 188969",
-  "coord": "1.3003785363064932, 103.85275606347334",
-  "phoneNo": "90612880",
-  "email": "contact@carriekrocks.com",
-  "lastOnline": 18,
+  "name": "Love Bonito",
+  "aboutUs": "Designed in Singapore, our styles are made with care, ensuring quality and value through thoughtful yet functional design details. Our in-house designers remain committed to perfecting the Asian fit for the everyday modern Asian woman.",
+  "imgUrl": "assets/img/merchants/love.png",
+  "location": "313 Orchard Rd, #02 - 16 / 21, Singapore 238895",
+  "coord": "1.3012697801439204, 103.8387671",
+  "phoneNo": "90612330",
+  "email": "hello@lovebonito.com",
+  "lastOnline": 10,
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6
