@@ -13,15 +13,34 @@ Content-Type: application/json
     "deliveryDate": "28/04/12"
 }
 ###
-POST https://support-local.herokuapp.com/api/users
+POST https://support-local.herokuapp.com/api/products
 Content-Type: application/json
 
 {
-  "email": "xavi@gmail.com",
-  "password": "123456789",
-  "profImageUrl": "assets/profilepng.png",
-  "reviews": [],
-  "orderDetails": []
+  "name": "Heritage Ear Jacket",
+  "price": 488,
+  "specialPrice": 460,
+  "category": "Women's Apparel",
+  "rating": 4,
+  "imgUrl": "assets/img/products/EarJacket.png",
+  "numberSold": 1,
+  "productDesc": "Built with the modern women in mind, our Heritage Ear Jackets can be worn with just the studs, with the jackets, mismatched or the jackets with your own solitaire.",
+  "productSpec": ["Clear Gems"],
+  "merchant": "636a15717d63de93d0c7f931"
+}
+###
+POST https://support-local.herokuapp.com/api/merchants
+Content-Type: application/json
+
+{
+  "name": "Carrie K.",
+  "aboutUs": "Carrie K. creates meaningful and versatile jewellery that lets you bring your story to life. Passionate about story-telling, we translate your journeys into meaningful and modular jewellery that transforms from simple everyday wear to statement pieces for special days. We exist to bring people together through these thoughtful conversation starters, and nurture a positive community through meaningful interactions.",
+  "imgUrl": "assets/img/merchants/carrie.png",
+  "location": "111 Middle Rd, #02-02 National Design Centre, Singapore 188969",
+  "coord": "1.3003785363064932, 103.85275606347334",
+  "phoneNo": "90612880",
+  "email": "contact@carriekrocks.com",
+  "lastOnline": 18,
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6

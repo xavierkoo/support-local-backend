@@ -5,8 +5,7 @@ const uniqueValidator = require('mongoose-unique-validator');
 
 const orderSchema = mongoose.Schema({
     user: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'User',
+        type: String,
     },
     orderDate: {
         type: String,
