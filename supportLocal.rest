@@ -17,30 +17,30 @@ POST https://support-local.herokuapp.com/api/products
 Content-Type: application/json
 
 {
-  "name": "Coreela Padded Pleated Crop Top",
-  "price": 45,
-  "specialPrice": 40,
-  "category": "Women's Apparel",
-  "rating": 4,
-  "imgUrl": "assets/img/products/flaredress.png",
-  "numberSold": 7,
-  "productDesc": "A brunch-to-dinner mainstay to have in your rotation. Made of textured linen, this dress features a fit & flare silhouette and a square neckline. Puffed at the sleeves to channel a romantic air. Comes with functional side pockets and a back zip closure.",
-  "productSpec": ["Textured Linen", "Machine Washable"],
-  "merchant": "636a8f4b7d63de93d0c7f95a"
+  "name": "Commercial cleaning service in Singapore, Basic Cleaning, Quotation-based, starting from $60",
+  "price": 0,
+  "specialPrice": 0,
+  "category": "Services",
+  "rating": 5,
+  "imgUrl": "assets/img/products/cleaning.png",
+  "numberSold": 20,
+  "productDesc": "Basic cleaning for your home and office. General cleaning including sweeping, dusting, mopping all areas indoor.",
+  "productSpec": ["Quotation-based", "From $60"],
+  "merchant": "636a9a3d7d63de93d0c7f974"
 }
 ###
 POST https://support-local.herokuapp.com/api/merchants
 Content-Type: application/json
 
 {
-  "name": "Love Bonito",
-  "aboutUs": "Designed in Singapore, our styles are made with care, ensuring quality and value through thoughtful yet functional design details. Our in-house designers remain committed to perfecting the Asian fit for the everyday modern Asian woman.",
-  "imgUrl": "assets/img/merchants/love.png",
-  "location": "313 Orchard Rd, #02 - 16 / 21, Singapore 238895",
-  "coord": "1.3012697801439204, 103.8387671",
-  "phoneNo": "90612330",
-  "email": "hello@lovebonito.com",
-  "lastOnline": 10,
+  "name": "Ette Tea",
+  "aboutUs": "We are a contemporary tea company specializing in tea blends with Singapore and South East Asian taste, with our main shop & atelier nestled in a quiet stretch of Kreta Ayer Road in Chinatown. Starting with the original Pandan Chiffon tea out of a home kitchen-ette, we now offer an exceptional collection of gourmet tea and artisan tea blends to cafes & restaurants in Singapore, Brunei & The Maldives.",
+  "imgUrl": "assets/img/merchants/service.svg",
+  "location": "100 Eunos Ave 7, Unit #01-01, Eunos, Singapore 409572",
+  "coord": "1.3239386337340247, 103.89748778095507",
+  "phoneNo": "88153055",
+  "email": "info@servishero.com",
+  "lastOnline": 5,
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6

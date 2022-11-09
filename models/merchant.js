@@ -46,11 +46,10 @@ const merchantSchema = mongoose.Schema({
             ref: 'Product',
         },
     ],
-    /* password: {
+    password: {
         type: 'String',
         required: true,
-        unique: true,
-    }, */
+    },
 });
 
 merchantSchema.set('toJSON', {
