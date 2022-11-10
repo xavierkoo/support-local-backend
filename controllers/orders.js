@@ -43,4 +43,16 @@ ordersRouter.post('/', async (request, response, next) => {
     }
 });
 
+// update order with new status
+ordersRouter.patch('/:id', async (request, response, next) => {
+    const status = request.body;
+
+    try {
+        const updatedOrder = await Order.findByIdAndUpdate(request.params.id, status, { new: true });
+        response.status(204).json(updatedOrder);
+    } catch (exception) {
+        next(exception);
+    }
+});
+
 module.exports = ordersRouter;

@@ -17,30 +17,30 @@ POST https://support-local.herokuapp.com/api/products
 Content-Type: application/json
 
 {
-  "name": "Commercial cleaning service in Singapore, Basic Cleaning, Quotation-based, starting from $60",
-  "price": 0,
-  "specialPrice": 0,
+  "name": "Tutor",
+  "price": 40,
+  "specialPrice": 35,
   "category": "Services",
   "rating": 5,
-  "imgUrl": "assets/img/products/cleaning.png",
-  "numberSold": 20,
-  "productDesc": "Basic cleaning for your home and office. General cleaning including sweeping, dusting, mopping all areas indoor.",
-  "productSpec": ["Quotation-based", "From $60"],
-  "merchant": "636a9a3d7d63de93d0c7f974"
+  "imgUrl": "assets/img/products/smile.png",
+  "numberSold": 82,
+  "productDesc": "With an extensive database of quality tutors, you can choose a tutor according to your budget and your child’s needs. With part-time, full-time, and school teachers, every child deserves a tutor. Contact for more info!",
+  "productSpec": ["Send us a quick request or give us a call now", "Wait a few hours so us to shortlist the best tutors", "Pick your preferred tutor and start the first lesson!"],
+  "merchant": "636c65fe7d63de93d0c7f9b4"
 }
 ###
 POST https://support-local.herokuapp.com/api/merchants
 Content-Type: application/json
 
 {
-  "name": "Ette Tea",
-  "aboutUs": "We are a contemporary tea company specializing in tea blends with Singapore and South East Asian taste, with our main shop & atelier nestled in a quiet stretch of Kreta Ayer Road in Chinatown. Starting with the original Pandan Chiffon tea out of a home kitchen-ette, we now offer an exceptional collection of gourmet tea and artisan tea blends to cafes & restaurants in Singapore, Brunei & The Maldives.",
-  "imgUrl": "assets/img/merchants/service.svg",
-  "location": "100 Eunos Ave 7, Unit #01-01, Eunos, Singapore 409572",
-  "coord": "1.3239386337340247, 103.89748778095507",
-  "phoneNo": "88153055",
-  "email": "info@servishero.com",
-  "lastOnline": 5,
+  "name": "Smile Tutor",
+  "aboutUs": "SmileTutor is the industry-leading tuition agency that delivers an unparalleled level of service. With the industry’s most comprehensive tutor database and experienced coordinators, our services help parents, students, and tutors find each other more Efficiently, Effectively, and Easily.",
+  "imgUrl": "assets/img/merchants/smile.png",
+  "location": "WCEGA TOWER 21 Bukit Batok Crescent #22-76/77 S658065",
+  "coord": "1.3373358061749812, 103.75979398873014",
+  "phoneNo": "62664475",
+  "email": "contactus@smiltetutor.sg",
+  "lastOnline": 3,
 }
 ###
 DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6
