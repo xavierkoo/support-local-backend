@@ -92,3 +92,35 @@ https://support-local.herokuapp.com/api/
 **Send:** orderStatus (String)<br>
 **Receive:** Updated Order Object,  Response Code - 204 || Exception
 
+### Products
+
+##### Get all products
+**GET:** https://support-local.herokuapp.com/api/products<br>
+**Send:** NIL<br>
+**Receive:** All Product Objects || Response Code - 404
+
+##### Get specific product
+**GET:** https://support-local.herokuapp.com/api/products/:id<br>
+**Send:** productId (ObjectId)<br>
+**Receive:** Specific Product Object || Response Code - 404
+
+##### Add new product
+**POST:** https://support-local.herokuapp.com/api/products<br>
+**Send:** name (String), price (Number), specialPrice (Number), category (String), rating (Number), imgUrl (String), numberSold (Number), productDesc (String), productSpec (String Array), merchant (ObjectId), reviews (ObjectId Array)<br>
+**Receive:** New Product Object Response Code - 201 || Exception
+
+##### Delete specific product
+**GET:** https://support-local.herokuapp.com/api/products/:id<br>
+**Send:** productId (ObjectId)<br>
+**Receive:** Specific Product Object Response Code - 204 || Exception
+
+##### Update product fields
+**PATCH:** https://support-local.herokuapp.com/api/products/:id<br>
+**Send:** name (String), price (Number), specialPrice (Number), category (String), rating (Number), imgUrl (String), numberSold (Number), productDesc (String), productSpec (String Array), merchant (ObjectId), reviews (ObjectId Array)<br>
+**Receive:** Updated Order Object,  Response Code - 204 || Exception
+
+##### Update product with new review
+**PATCH:** https://support-local.herokuapp.com/api/products/:id<br>
+**Send:** reviews (ObjectId Array)<br>
+**Receive:** Updated Order Object,  Response Code - 204 || Exception
+
