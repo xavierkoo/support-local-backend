@@ -8,8 +8,6 @@ Main App Link: https://supportlocal.netlify.app/
 
 Frontend Repository: https://github.com/WAD2-T05/support-local
 
-API Endpoint: https://support-local.herokuapp.com/api
-
 ## Backend Tech Stack 
 * Express
 * Node.js
@@ -47,3 +45,50 @@ You may make API calls to the server locally via `localhost:3001`.
 
 ## Database Entity-Relationship Diagram
 <img width="909" alt="Screenshot 2022-11-10 at 8 58 20 AM" src="https://user-images.githubusercontent.com/86020207/200974440-d8cb04be-0674-47a6-a615-6e0baed0e140.png">
+
+# API Documentation
+
+## Base API URL
+https://support-local.herokuapp.com/api/
+
+## User Related APIs
+
+### Merchants
+
+##### Get all merchants
+**GET:** https://support-local.herokuapp.com/api/merchants<br>
+**Send:** NIL<br>
+**Receive:** All Merchant Objects || Response Code - 404
+
+##### Get specific merchant
+**GET:** https://support-local.herokuapp.com/api/merchants/:id<br>
+**Send:** merchantId (ObjectId)<br>
+**Receive:** Specific Merchant Object || Response Code - 404
+
+##### Update merchant products
+**PATCH:** https://support-local.herokuapp.com/api/merchants/:id<br>
+**Send:** merchantId (ObjectId), productId (ObjectId Array)<br>
+**Receive:** Updated Merchant Object,  Response Code - 204|| Exception
+
+### Orders
+
+##### Get all orders
+**GET:** https://support-local.herokuapp.com/api/orders<br>
+**Send:** NIL<br>
+**Receive:** All Order Objects || Response Code - 404
+
+##### Get specific order
+**GET:** https://support-local.herokuapp.com/api/orders/:id<br>
+**Send:** orderId (ObjectId)<br>
+**Receive:** Specific Order Object || Response Code - 404
+
+##### Add new order
+**POST:** https://support-local.herokuapp.com/api/orders<br>
+**Send:** user (ObjectId), orderDate (String), orderStatus (String), products (ObjectId Array), delivaryDate (String)<br>
+**Receive:** New Order Object Response Code - 201 || Exception
+
+##### Update order status
+**PATCH:** https://support-local.herokuapp.com/api/orders/:id<br>
+**Send:** orderStatus (String)<br>
+**Receive:** Updated Order Object,  Response Code - 204 || Exception
+
