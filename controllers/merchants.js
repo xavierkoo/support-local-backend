@@ -29,6 +29,7 @@ merchantsRouter.patch('/:id', async (request, response, next) => {
 
     try {
         const updatedMerchant = await Merchant.findByIdAndUpdate(request.params.id, newProduct, { new: true });
+        logger.info('updated product field in merchant');
         return response.status(204).json(updatedMerchant);
     } catch (exception) {
         next(exception);

@@ -13,20 +13,14 @@ Content-Type: application/json
     "deliveryDate": "28/04/12"
 }
 ###
-POST https://support-local.herokuapp.com/api/products
+POST https://support-local.herokuapp.com/api/reviews
 Content-Type: application/json
 
 {
-  "name": "Tutor",
-  "price": 40,
-  "specialPrice": 35,
-  "category": "Services",
+  "user": "635ac046b01737e727fb4b42",
+  "product": "636956d44bb8bd31e89c81b8",
   "rating": 5,
-  "imgUrl": "assets/img/products/smile.png",
-  "numberSold": 82,
-  "productDesc": "With an extensive database of quality tutors, you can choose a tutor according to your budget and your child’s needs. With part-time, full-time, and school teachers, every child deserves a tutor. Contact for more info!",
-  "productSpec": ["Send us a quick request or give us a call now", "Wait a few hours so us to shortlist the best tutors", "Pick your preferred tutor and start the first lesson!"],
-  "merchant": "636c65fe7d63de93d0c7f9b4"
+  "orderDetails": "Fast Delivery, haven't open yet, looks good"
 }
 ###
 POST https://support-local.herokuapp.com/api/merchants
@@ -47,11 +41,10 @@ DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6
 # Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJhcnJ5IiwiaWQiOiI2MmYxMjE5NDlkYTRkYjJhNzdlYzJmYTEiLCJpYXQiOjE2NjA0ODM1NjF9.ILPVKjYy9QzGI7p8gGXOA1hi-rx-_dozQAKxCIV0kCI
 ###
 
-PATCH http://localhost:3001/api/users/635ac046b01737e727fb4b42
-Content-Type: application/json
+PATCH https://support-local.herokuapp.com/api/products/636956d44bb8bd31e89c81b8
 
 {
-  "orderDetails": ["636924d7760a582d6bd259b0"]
+  "reviews": ["636d1685be49dc74d427bfb8"]
 }
 ###
 POST http://localhost:3001/api/login
