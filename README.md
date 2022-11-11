@@ -107,12 +107,12 @@ https://support-local.herokuapp.com/api/
 ##### Add new product
 **POST:** https://support-local.herokuapp.com/api/products<br>
 **Send:** name (String), price (Number), specialPrice (Number), category (String), rating (Number), imgUrl (String), numberSold (Number), productDesc (String), productSpec (String Array), merchant (ObjectId), reviews (ObjectId Array)<br>
-**Receive:** New Product Object Response Code - 201 || Exception
+**Receive:** New Product Object, Response Code - 201 || Exception
 
 ##### Delete specific product
 **GET:** https://support-local.herokuapp.com/api/products/:id<br>
 **Send:** productId (ObjectId)<br>
-**Receive:** Specific Product Object Response Code - 204 || Exception
+**Receive:** Specific Product Object, Response Code - 204 || Exception
 
 ##### Update product fields
 **PATCH:** https://support-local.herokuapp.com/api/products/:id<br>
@@ -123,4 +123,48 @@ https://support-local.herokuapp.com/api/
 **PATCH:** https://support-local.herokuapp.com/api/products/:id<br>
 **Send:** reviews (ObjectId Array)<br>
 **Receive:** Updated Order Object,  Response Code - 204 || Exception
+
+### Reviews
+
+##### Get all reviews
+**GET:** https://support-local.herokuapp.com/api/reviews<br>
+**Send:** NIL<br>
+**Receive:** All Review Objects || Response Code - 404
+
+##### Get specific review
+**GET:** https://support-local.herokuapp.com/api/reviews/:id<br>
+**Send:** reviewId (ObjectId)<br>
+**Receive:** Specific Review Object || Response Code - 404
+
+##### Add new review
+**POST:** https://support-local.herokuapp.com/api/reviews<br>
+**Send:** user (ObjectId), product (ObjectId), rating (Number), orderDetails (String)<br>
+**Receive:** New Review Object, Response Code - 201 || Exception
+
+### Users
+
+##### Get all users
+**GET:** https://support-local.herokuapp.com/api/users<br>
+**Send:** NIL<br>
+**Receive:** All User Objects || Response Code - 404
+
+##### Get specific user
+**GET:** https://support-local.herokuapp.com/api/users/:id<br>
+**Send:** userId (ObjectId)<br>
+**Receive:** Specific User Object || Response Code - 404
+
+##### Add new user
+**POST:** https://support-local.herokuapp.com/api/users<br>
+**Send:** email (String), password (String), profImageUrl (String), reviews (ObjectId Array), orderDetails (ObjectId Array)<br>
+**Receive:** New User Object, Response Code - 201 || Exception
+
+##### Update user with new order
+**PATCH:** https://support-local.herokuapp.com/api/users/:id<br>
+**Send:** orderDetails (ObjectId Array)<br>
+**Receive:** Updated User Object,  Response Code - 204 || Exception
+
+##### Update user with new review
+**PATCH:** https://support-local.herokuapp.com/api/users/:id<br>
+**Send:** reviews (ObjectId Array)<br>
+**Receive:** Updated User Object,  Response Code - 204 || Exception
 
