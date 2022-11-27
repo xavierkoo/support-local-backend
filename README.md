@@ -6,7 +6,7 @@ Support Local is THE one-stop shop for all things local. It compiles all local b
 
 Main App Link: https://supportlocal.netlify.app/
 
-Frontend Repository: https://github.com/WAD2-T05/support-local
+Frontend Repository: https://github.com/xavierkoo/support-local
 
 ## Backend Tech Stack 
 * Express
@@ -17,7 +17,7 @@ Frontend Repository: https://github.com/WAD2-T05/support-local
 
 ### Download project repository to your local directory:
 ```
-git clone git@github.com:WAD2-T05/support-local-backend.git
+git clone git@github.com:xavierkoo/support-local-backend.git
 ```
 
 ### Open your terminal in local project, and execute:
