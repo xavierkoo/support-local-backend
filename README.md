@@ -4,6 +4,8 @@
 
 Support Local is THE one-stop shop for all things local. It compiles all local businesses, and services in an easy-to-use portal and allows them to offer their products and services to customers through the platform.
 
+This is the backend repository for the Support Local web application built upon Node.js with RESTful APIs developed using Express. Data for the application is stored on MongoDB.
+
 Main App Link: https://supportlocal.netlify.app/
 
 Frontend Repository: https://github.com/xavierkoo/support-local-frontend
