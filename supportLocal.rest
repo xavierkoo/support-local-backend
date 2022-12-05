@@ -1,0 +1,60 @@
+GET http://localhost:3001/api/blogs
+Content-Type: application/json
+Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJhcnJ5IiwiaWQiOiI2MmYxMjE5NDlkYTRkYjJhNzdlYzJmYTEiLCJpYXQiOjE2NjA0ODM1NjF9.ILPVKjYy9QzGI7p8gGXOA1hi-rx-_dozQAKxCIV0kCI
+###
+POST http://localhost:3001/api/orders
+Content-Type: application/json
+
+{
+    "user": "635ac046b01737e727fb4b42",
+    "orderDate": "28/03/12",
+    "orderStatus": "Delivery In Progress",
+    "products": ["635abd38b01737e727fb4b38", "635c3dc47d63de93d0c7f798"],
+    "deliveryDate": "28/04/12"
+}
+###
+POST https://support-local.herokuapp.com/api/reviews
+Content-Type: application/json
+
+{
+  "user": "635ac046b01737e727fb4b42",
+  "product": "636956d44bb8bd31e89c81b8",
+  "rating": 5,
+  "orderDetails": "Fast Delivery, haven't open yet, looks good"
+}
+###
+POST https://support-local.herokuapp.com/api/merchants
+Content-Type: application/json
+
+{
+  "name": "Smile Tutor",
+  "aboutUs": "SmileTutor is the industry-leading tuition agency that delivers an unparalleled level of service. With the industry’s most comprehensive tutor database and experienced coordinators, our services help parents, students, and tutors find each other more Efficiently, Effectively, and Easily.",
+  "imgUrl": "assets/img/merchants/smile.png",
+  "location": "WCEGA TOWER 21 Bukit Batok Crescent #22-76/77 S658065",
+  "coord": "1.3373358061749812, 103.75979398873014",
+  "phoneNo": "62664475",
+  "email": "contactus@smiltetutor.sg",
+  "lastOnline": 3,
+}
+###
+DELETE  http://localhost:3001/api/products/636120625efd11809b18c9a6
+# Authorization: bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6IkJhcnJ5IiwiaWQiOiI2MmYxMjE5NDlkYTRkYjJhNzdlYzJmYTEiLCJpYXQiOjE2NjA0ODM1NjF9.ILPVKjYy9QzGI7p8gGXOA1hi-rx-_dozQAKxCIV0kCI
+###
+
+PATCH https://support-local.herokuapp.com/api/products/636956d44bb8bd31e89c81b8
+
+{
+  "reviews": ["636d1685be49dc74d427bfb8"]
+}
+###
+POST http://localhost:3001/api/login
+Content-Type: application/json
+
+{
+  "username": "Barry",
+  "password": "salainen"
+}
+###
+GET https://support-local.herokuapp.com/api/orders
+Content-Type: application/json
+

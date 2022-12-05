@@ -2,7 +2,7 @@ const Merchant = require('../models/merchant');
 
 const initialMerchants = [
     {
-        _id: '636c65fe7d63de93d0c7f9b4',
+        _id: '638cec4c3f1b6f29cedb15c1',
         name: 'Smile Tutor',
         aboutUs: 'SmileTutor is the industry-leading tuition agency that delivers an unparalleled level of service. With the industry’s most comprehensive tutor database and experienced coordinators, our services help parents, students, and tutors find each other more Efficiently, Effectively, and Easily.',
         imgUrl: 'assets/img/merchants/smile.avif',
@@ -34,7 +34,7 @@ const initialMerchants = [
 ];
 
 const merchantsInDb = async () => {
-    const merchants = await Merchant.find({})
+    const merchants = await Merchant.find({});
     return merchants.map((merchant) => merchant.toJSON());
 };
 
