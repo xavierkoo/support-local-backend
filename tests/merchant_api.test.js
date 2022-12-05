@@ -64,156 +64,23 @@ describe('initial merchants in database', () => {
     });
 });
 
-describe('adding a merchant', () => {
-    test('a valid merchant can be added', async () => {
-        const newMerchant = {
-            _id: '5a422aa71b54a676234d17f8',
-            name: 'Bread Shop',
-            aboutUs: 'Bread Shop is the industry-leading Bread',
-            imgUrl: 'assets/img/merchants/bread.avif',
-            location: 'WCEGA TOWER 21 Bukit Batok Crescent #22-76/77 S658065',
-            coord: '1.3373358061749812, 103.75979398873014',
-            phoneNo: '62664475',
-            email: 'contactus@bread.sg',
-            lastOnline: 3,
+describe('updating a merchant product', () => {
+    test('updating merchant product', async () => {
+        const merchantsAtStart = await helper.merchantsInDb();
+        const merchantToUpdate = merchantsAtStart[merchantsAtStart.length - 1];
+        const updatedMerchant = {
             products: [],
         };
-
         await api
-            .post('/api/merchants')
-            .send(newMerchant)
-            .expect(201)
-            .expect('Content-Type', /application\/json/);
-
-        const merchantsAtEnd = await helper.merchantsInDb();
-        expect(merchantsAtEnd).toHaveLength(helper.initialMerchants.length + 1);
-
-        const names = merchantsAtEnd.map((n) => n.name);
-        expect(names).toContain(
-            'Bread Shop',
-        );
-    });
-
-    test('merchant without content is not added', async () => {
-        const newMerchant = {
-            coord: '1.3373358061749812, 103.75979398873014',
-            phoneNo: '62664475',
-        };
-
-        await api
-            .post('/api/merchants')
-            .send(newMerchant)
-            .expect(400);
-
-        const merchantsAtEnd = await helper.merchantsInDb();
-
-        expect(merchantsAtEnd).toHaveLength(helper.initialMerchants.length);
-    });
-
-     test('like property missing, default to 0', async () => {
-        const newBlog = {
-          title: 'Boxing for Dummies',
-          author: 'Bober Dylan',
-          url: 'www.boberdyl.com',
-        }
-    
-        await api
-          .post('/api/blogs')
-          .send(newBlog)
-          .set(headers)
-          .expect(201)
-          .expect('Content-Type', /application\/json/)
-    
-        const blogsAtEnd = await helper.blogsInDb()
-        const addedBlog = await blogsAtEnd.find((blog) => blog.title === newBlog.title)
-        expect(addedBlog.likes).toBe(0)
-      })
-    }) 
-
-describe('updating a merchant product', () => {
-    beforeEach(async () => {
-        const updatedMerchant = {
-            aboutUs: 'Bread Shop is the industry-leading Bread Shop in Singapore',
-        };
-
-        await api
-            .patch('/api/merchants')
+            .patch(`/api/merchant/${merchantToUpdate.id}`)
             .send(updatedMerchant)
             .expect(204);
-    });
 
-    test('updating merchant aboutUs', async () => {
-      const blogsAtStart = await helper.blogsInDb()
-      const blogToUpdate = blogsAtStart[blogsAtStart.length - 1]
-      const updatedBlog = {
-        ...blogToUpdate,
-        likes: 100,
-      }
-      await api
-        .put(`/api/blogs/${blogToUpdate.id}`)
-        .send(updatedBlog)
-        .set(headers)
-        .expect(200)
-  
-      const blogsAtEnd = await helper.blogsInDb()
-      const aBlogAtEnd = blogsAtEnd.find((b) => b.id === blogToUpdate.id)
-      expect(aBlogAtEnd.likes).toBe(100)
-    })
-  })
-  
-  describe('deleting a blog', () => {
-    beforeEach(async () => {
-      const newUser = {
-        username: 'root',
-        name: 'root',
-        password: 'password',
-      }
-  
-      await api
-        .post('/api/users')
-        .send(newUser)
-  
-      const result = await api
-        .post('/api/login')
-        .send(newUser)
-  
-      headers = {
-        Authorization: `bearer ${result.body.token}`,
-      }
-  
-      const newBlog = {
-        title: 'The best blog ever',
-        author: 'Me',
-        url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
-        likes: 12,
-      }
-  
-      await api
-        .post('/api/blogs')
-        .send(newBlog)
-        .set(headers)
-        .expect(201)
-    })
-  
-    test('a blog can be deleted', async () => {
-      const blogsAtStart = await helper.blogsInDb()
-      const blogToDelete = blogsAtStart[blogsAtStart.length - 1]
-      await api
-        .delete(`/api/blogs/${blogToDelete.id}`)
-        .set(headers)
-        .expect(204)
-  
-      const blogsAtEnd = await helper.blogsInDb()
-  
-      expect(blogsAtEnd).toHaveLength(
-        blogsAtStart.length - 1,
-      )
-  
-      const titles = blogsAtEnd.map((r) => r.title)
-  
-      expect(titles).not.toContain(blogToDelete.title)
-    })
-  })
+        const merchantsAtEnd = await helper.merchantsInDb();
+        const aMerchantAtEnd = merchantsAtEnd.find((b) => b.id === merchantToUpdate.id);
+        expect(aMerchantAtEnd.products).toHaveSize(0);
+    });
+});
 
 afterAll(() => {
     mongoose.connection.close();

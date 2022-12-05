@@ -1,11 +1,11 @@
 const supertest = require('supertest');
 const mongoose = require('mongoose');
-const helper = require('./merchant_test_helper');
+const helper = require('./merchant_test_helper copy');
 const app = require('../app');
 
 const api = supertest(app);
 
-const Merchant = require('../models/merchant');
+const Order = require('../models/order');
 
 beforeEach(async () => {
     await Merchant.deleteMany({});
