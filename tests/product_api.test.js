@@ -142,24 +142,23 @@ describe('updating a merchant product', () => {
             .expect(204);
     });
 
-    test('updating merchant aboutUs', async () => {
-      const blogsAtStart = await helper.blogsInDb()
-      const blogToUpdate = blogsAtStart[blogsAtStart.length - 1]
-      const updatedBlog = {
-        ...blogToUpdate,
-        likes: 100,
-      }
-      await api
-        .put(`/api/blogs/${blogToUpdate.id}`)
-        .send(updatedBlog)
-        .set(headers)
-        .expect(200)
+    describe('updating a merchant product', () => {
+      test('updating merchant product', async () => {
+          const merchantsAtStart = await helper.merchantsInDb();
+          const merchantToUpdate = merchantsAtStart[merchantsAtStart.length - 1];
+          const updatedMerchant = {
+              products: [],
+          };
+          await api
+              .patch(`/api/merchant/${merchantToUpdate.id}`)
+              .send(updatedMerchant)
+              .expect(204);
   
-      const blogsAtEnd = await helper.blogsInDb()
-      const aBlogAtEnd = blogsAtEnd.find((b) => b.id === blogToUpdate.id)
-      expect(aBlogAtEnd.likes).toBe(100)
-    })
-  })
+          const merchantsAtEnd = await helper.merchantsInDb();
+          const aMerchantAtEnd = merchantsAtEnd.find((b) => b.id === merchantToUpdate.id);
+          expect(aMerchantAtEnd.products).toHaveSize(0);
+      });
+  });
   
   describe('deleting a blog', () => {
     beforeEach(async () => {
