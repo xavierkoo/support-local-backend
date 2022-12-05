@@ -6,7 +6,7 @@ Support Local is THE one-stop shop for all things local. It compiles all local b
 
 # General Info
 
-This is the backend repository for the Support Local web application built upon Node.js with RESTful APIs developed using Express. Data for the application is stored on MongoDB.
+This is the backend repository for the Support Local web application built upon Node.js with RESTful APIs developed using Express. Data for the application is stored on MongoDB. Integration tests are written with Jest.
 
 Main App Link: https://supportlocal.netlify.app/
 
@@ -16,6 +16,7 @@ Frontend Repository: https://github.com/xavierkoo/support-local-frontend
 * Express
 * Node.js
 * MongoDB
+* Jest
 
 ## Project setup
 
