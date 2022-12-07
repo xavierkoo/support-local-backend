@@ -1,206 +1,110 @@
 const supertest = require('supertest');
 const mongoose = require('mongoose');
-const helper = require('./merchant_test_helper');
+const helper = require('./review_test_helper');
 const app = require('../app');
 
 const api = supertest(app);
 
-const Merchant = require('../models/merchant');
+const Review = require('../models/review');
 
 beforeEach(async () => {
-    await Merchant.deleteMany({});
+    await Review.deleteMany({});
 
-    const merchantObjects = helper.initialMerchants
-        .map((merchant) => new Merchant(merchant));
+    const reviewObjects = helper.initialReviews
+        .map((review) => new Review(review));
 
-    const promiseArray = merchantObjects.map((merchant) => merchant.save());
+    const promiseArray = reviewObjects.map((review) => review.save());
 
     await Promise.all(promiseArray);
 });
 
-describe('initial merchants in database', () => {
-    test('merchants are returned as json', async () => {
+describe('initial reviews in database', () => {
+    test('reviews are returned as json', async () => {
         await api
-            .get('/api/merchants')
+            .get('/api/reviews')
             .expect(200)
             .expect('Content-Type', /application\/json/);
     }, 100000);
 
-    test('all merchants are returned', async () => {
+    test('all reviews are returned', async () => {
         const response = await api
-            .get('/api/merchants');
+            .get('/api/reviews');
 
-        expect(response.body).toHaveLength(helper.initialMerchants.length);
+        expect(response.body).toHaveLength(helper.initialReviews.length);
     });
 
-    test('a specific merchant is within the returned merchants', async () => {
+    test('a specific review is within the returned reviews', async () => {
         const response = await api
-            .get('/api/merchants');
+            .get('/api/reviews');
 
-        const names = response.body.map((n) => n.name);
-        expect(names).toContain(
-            'Smile Tutor',
+        const reviews = response.body.map((r) => r.id);
+        expect(reviews).toContain(
+            '635ac30d9ae68ed65931b7a6',
         );
     });
 
-    test('a specific merchant can be viewed', async () => {
-        const merchantsAtStart = await helper.merchantsInDb();
+    test('a specific review can be viewed', async () => {
+        const reviewsAtStart = await helper.reviewsInDb();
 
-        const merchantToView = merchantsAtStart[0];
+        const reviewToView = reviewsAtStart[0];
 
-        const resultMerchant = await api
-            .get(`/api/merchants/${merchantToView.id}`)
+        const resultReview = await api
+            .get(`/api/reviews/${reviewToView.id}`)
             .expect(200)
             .expect('Content-Type', /application\/json/);
 
-        const processedMerchantToView = JSON.parse(JSON.stringify(merchantToView));
+        const processedReviewToView = JSON.parse(JSON.stringify(reviewToView));
 
-        expect(resultMerchant.body).toEqual(processedMerchantToView);
+        expect(resultReview.body).toEqual(processedReviewToView);
     });
 
     test('unique identifier by default is _id', async () => {
-        const merchantsAtStart = await helper.merchantsInDb();
-        expect(merchantsAtStart[0].id).toBeDefined();
+        const reviewsAtStart = await helper.reviewsInDb();
+        expect(reviewsAtStart[0].id).toBeDefined();
     });
 });
 
-describe('adding a merchant', () => {
-    test('a valid merchant can be added', async () => {
-        const newMerchant = {
-            _id: '5a422aa71b54a676234d17f8',
-            name: 'Bread Shop',
-            aboutUs: 'Bread Shop is the industry-leading Bread',
-            imgUrl: 'assets/img/merchants/bread.avif',
-            location: 'WCEGA TOWER 21 Bukit Batok Crescent #22-76/77 S658065',
-            coord: '1.3373358061749812, 103.75979398873014',
-            phoneNo: '62664475',
-            email: 'contactus@bread.sg',
-            lastOnline: 3,
-            products: [],
+describe('adding a review', () => {
+    test('a valid review can be added', async () => {
+        const newReview = {
+            _id: '635ac30d9ae68ed65931b7a6',
+            user: '635ac046b01737e727fb4b42',
+            product: '635ac046b01737e727fb4b42',
+            rating: 3,
+            orderDetails: 'Fast Delivery, good quality product, will buy again!',
         };
 
         await api
-            .post('/api/merchants')
-            .send(newMerchant)
+            .post('/api/reviews')
+            .send(newReview)
             .expect(201)
             .expect('Content-Type', /application\/json/);
 
-        const merchantsAtEnd = await helper.merchantsInDb();
-        expect(merchantsAtEnd).toHaveLength(helper.initialMerchants.length + 1);
+        const reviewsAtEnd = await helper.reviewsInDb();
+        expect(reviewsAtEnd).toHaveLength(helper.initialReviews.length + 1);
 
-        const names = merchantsAtEnd.map((n) => n.name);
-        expect(names).toContain(
-            'Bread Shop',
+        const ids = reviewsAtEnd.map((i) => i._id);
+        expect(ids).toContain(
+            '635ac30d9ae68ed65931b7a6',
         );
     });
 
-    test('merchant without content is not added', async () => {
-        const newMerchant = {
-            coord: '1.3373358061749812, 103.75979398873014',
-            phoneNo: '62664475',
+    test('review without content is not added', async () => {
+        const newReview = {
+            rating: 3,
+            orderDetails: 'Fast Delivery, good quality product, will buy again!',
         };
 
         await api
-            .post('/api/merchants')
-            .send(newMerchant)
+            .post('/api/reviews')
+            .send(newReview)
             .expect(400);
 
-        const merchantsAtEnd = await helper.merchantsInDb();
+        const reviewsAtEnd = await helper.reviewsInDb();
 
-        expect(merchantsAtEnd).toHaveLength(helper.initialMerchants.length);
+        expect(reviewsAtEnd).toHaveLength(helper.initialReviews.length);
     });
-
-     test('like property missing, default to 0', async () => {
-        const newBlog = {
-          title: 'Boxing for Dummies',
-          author: 'Bober Dylan',
-          url: 'www.boberdyl.com',
-        }
-    
-        await api
-          .post('/api/blogs')
-          .send(newBlog)
-          .set(headers)
-          .expect(201)
-          .expect('Content-Type', /application\/json/)
-    
-        const blogsAtEnd = await helper.blogsInDb()
-        const addedBlog = await blogsAtEnd.find((blog) => blog.title === newBlog.title)
-        expect(addedBlog.likes).toBe(0)
-      })
-    }) 
-
-    describe('updating a merchant product', () => {
-      test('updating merchant product', async () => {
-          const merchantsAtStart = await helper.merchantsInDb();
-          const merchantToUpdate = merchantsAtStart[merchantsAtStart.length - 1];
-          const updatedMerchant = {
-              products: [],
-          };
-          await api
-              .patch(`/api/merchant/${merchantToUpdate.id}`)
-              .send(updatedMerchant)
-              .expect(204);
-  
-          const merchantsAtEnd = await helper.merchantsInDb();
-          const aMerchantAtEnd = merchantsAtEnd.find((b) => b.id === merchantToUpdate.id);
-          expect(aMerchantAtEnd.products).toHaveSize(0);
-      });
-  });
-  
-  describe('deleting a blog', () => {
-    beforeEach(async () => {
-      const newUser = {
-        username: 'root',
-        name: 'root',
-        password: 'password',
-      }
-  
-      await api
-        .post('/api/users')
-        .send(newUser)
-  
-      const result = await api
-        .post('/api/login')
-        .send(newUser)
-  
-      headers = {
-        Authorization: `bearer ${result.body.token}`,
-      }
-  
-      const newBlog = {
-        title: 'The best blog ever',
-        author: 'Me',
-        url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
-        likes: 12,
-      }
-  
-      await api
-        .post('/api/blogs')
-        .send(newBlog)
-        .set(headers)
-        .expect(201)
-    })
-  
-    test('a blog can be deleted', async () => {
-      const blogsAtStart = await helper.blogsInDb()
-      const blogToDelete = blogsAtStart[blogsAtStart.length - 1]
-      await api
-        .delete(`/api/blogs/${blogToDelete.id}`)
-        .set(headers)
-        .expect(204)
-  
-      const blogsAtEnd = await helper.blogsInDb()
-  
-      expect(blogsAtEnd).toHaveLength(
-        blogsAtStart.length - 1,
-      )
-  
-      const titles = blogsAtEnd.map((r) => r.title)
-  
-      expect(titles).not.toContain(blogToDelete.title)
-    })
-  })
+});
 
 afterAll(() => {
     mongoose.connection.close();
