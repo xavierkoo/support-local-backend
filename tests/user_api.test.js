@@ -1,206 +1,145 @@
 const supertest = require('supertest');
 const mongoose = require('mongoose');
-const helper = require('./merchant_test_helper');
+const helper = require('./user_test_helper');
 const app = require('../app');
 
 const api = supertest(app);
 
-const Merchant = require('../models/merchant');
+const User = require('../models/user');
 
 beforeEach(async () => {
-    await Merchant.deleteMany({});
+    await User.deleteMany({});
 
-    const merchantObjects = helper.initialMerchants
-        .map((merchant) => new Merchant(merchant));
+    const userObjects = helper.initialUsers
+        .map((user) => new User(user));
 
-    const promiseArray = merchantObjects.map((merchant) => merchant.save());
+    const promiseArray = userObjects.map((user) => user.save());
 
     await Promise.all(promiseArray);
 });
 
-describe('initial merchants in database', () => {
-    test('merchants are returned as json', async () => {
+describe('initial users in database', () => {
+    test('users are returned as json', async () => {
         await api
-            .get('/api/merchants')
+            .get('/api/users')
             .expect(200)
             .expect('Content-Type', /application\/json/);
     }, 100000);
 
-    test('all merchants are returned', async () => {
+    test('all users are returned', async () => {
         const response = await api
-            .get('/api/merchants');
+            .get('/api/users');
 
-        expect(response.body).toHaveLength(helper.initialMerchants.length);
+        expect(response.body).toHaveLength(helper.initialUsers.length);
     });
 
-    test('a specific merchant is within the returned merchants', async () => {
+    test('a specific user is within the returned users', async () => {
         const response = await api
-            .get('/api/merchants');
+            .get('/api/users');
 
-        const names = response.body.map((n) => n.name);
-        expect(names).toContain(
-            'Smile Tutor',
+        const emails = response.body.map((e) => e.email);
+        expect(emails).toContain(
+            'rayjeff@gmail.com',
         );
     });
 
-    test('a specific merchant can be viewed', async () => {
-        const merchantsAtStart = await helper.merchantsInDb();
+    test('a specific user can be viewed', async () => {
+        const usersAtStart = await helper.usersInDb();
 
-        const merchantToView = merchantsAtStart[0];
+        const userToView = usersAtStart[0];
 
-        const resultMerchant = await api
-            .get(`/api/merchants/${merchantToView.id}`)
+        const resultUser = await api
+            .get(`/api/users/${userToView.id}`)
             .expect(200)
             .expect('Content-Type', /application\/json/);
 
-        const processedMerchantToView = JSON.parse(JSON.stringify(merchantToView));
+        const processedUserToView = JSON.parse(JSON.stringify(userToView));
 
-        expect(resultMerchant.body).toEqual(processedMerchantToView);
+        expect(resultUser.body).toEqual(processedUserToView);
     });
 
     test('unique identifier by default is _id', async () => {
-        const merchantsAtStart = await helper.merchantsInDb();
-        expect(merchantsAtStart[0].id).toBeDefined();
+        const usersAtStart = await helper.usersInDb();
+        expect(usersAtStart[0].id).toBeDefined();
     });
 });
 
-describe('adding a merchant', () => {
-    test('a valid merchant can be added', async () => {
-        const newMerchant = {
-            _id: '5a422aa71b54a676234d17f8',
-            name: 'Bread Shop',
-            aboutUs: 'Bread Shop is the industry-leading Bread',
-            imgUrl: 'assets/img/merchants/bread.avif',
-            location: 'WCEGA TOWER 21 Bukit Batok Crescent #22-76/77 S658065',
-            coord: '1.3373358061749812, 103.75979398873014',
-            phoneNo: '62664475',
-            email: 'contactus@bread.sg',
-            lastOnline: 3,
-            products: [],
+describe('adding a user', () => {
+    test('a valid user can be added', async () => {
+        const newUser = {
+            id: '63672224263d6f060974c315',
+            email: 'bananabobzf@gmail.com',
+            password: 'r332r38',
+            profImageUrl: 'assets/img/placeholders/dp3.jpeg',
+            reviews: [],
+            orderDetails: [],
         };
 
         await api
-            .post('/api/merchants')
-            .send(newMerchant)
+            .post('/api/users')
+            .send(newUser)
             .expect(201)
             .expect('Content-Type', /application\/json/);
 
-        const merchantsAtEnd = await helper.merchantsInDb();
-        expect(merchantsAtEnd).toHaveLength(helper.initialMerchants.length + 1);
+        const usersAtEnd = await helper.usersInDb();
+        expect(usersAtEnd).toHaveLength(helper.initialUsers.length + 1);
 
-        const names = merchantsAtEnd.map((n) => n.name);
-        expect(names).toContain(
-            'Bread Shop',
+        const emails = usersAtEnd.map((e) => e.email);
+        expect(emails).toContain(
+            'bananabobzf@gmail.com',
         );
     });
 
-    test('merchant without content is not added', async () => {
-        const newMerchant = {
-            coord: '1.3373358061749812, 103.75979398873014',
-            phoneNo: '62664475',
+    test('user without content is not added', async () => {
+        const newUser = {
+            profImageUrl: 'assets/img/placeholders/dp3.jpeg',
+            reviews: [],
         };
 
         await api
-            .post('/api/merchants')
-            .send(newMerchant)
+            .post('/api/users')
+            .send(newUser)
             .expect(400);
 
-        const merchantsAtEnd = await helper.merchantsInDb();
+        const usersAtEnd = await helper.usersInDb();
 
-        expect(merchantsAtEnd).toHaveLength(helper.initialMerchants.length);
+        expect(usersAtEnd).toHaveLength(helper.initialUsers.length);
+    });
+});
+
+describe('updating a user', () => {
+    test('updating user with new review', async () => {
+        const usersAtStart = await helper.usersInDb();
+        const userToUpdate = usersAtStart[usersAtStart.length - 1];
+        const updatedUser = {
+            reviews: ['636e5451de327c77ff2a79f5'],
+        };
+        await api
+            .patch(`/api/user/${userToUpdate.id}`)
+            .send(updatedUser)
+            .expect(204);
+
+        const usersAtEnd = await helper.usersInDb();
+        const aUserAtEnd = usersAtEnd.find((b) => b.id === userToUpdate.id);
+        expect(aUserAtEnd.reviews).toHaveSize(1);
     });
 
-     test('like property missing, default to 0', async () => {
-        const newBlog = {
-          title: 'Boxing for Dummies',
-          author: 'Bober Dylan',
-          url: 'www.boberdyl.com',
-        }
-    
+    test('updating user with new order', async () => {
+        const usersAtStart = await helper.usersInDb();
+        const userToUpdate = usersAtStart[usersAtStart.length - 1];
+        const updatedUser = {
+            orders: ['636e53fede327c77ff2a79e9'],
+        };
         await api
-          .post('/api/blogs')
-          .send(newBlog)
-          .set(headers)
-          .expect(201)
-          .expect('Content-Type', /application\/json/)
-    
-        const blogsAtEnd = await helper.blogsInDb()
-        const addedBlog = await blogsAtEnd.find((blog) => blog.title === newBlog.title)
-        expect(addedBlog.likes).toBe(0)
-      })
-    }) 
+            .patch(`/api/user/${userToUpdate.id}`)
+            .send(updatedUser)
+            .expect(204);
 
-    describe('updating a merchant product', () => {
-      test('updating merchant product', async () => {
-          const merchantsAtStart = await helper.merchantsInDb();
-          const merchantToUpdate = merchantsAtStart[merchantsAtStart.length - 1];
-          const updatedMerchant = {
-              products: [],
-          };
-          await api
-              .patch(`/api/merchant/${merchantToUpdate.id}`)
-              .send(updatedMerchant)
-              .expect(204);
-  
-          const merchantsAtEnd = await helper.merchantsInDb();
-          const aMerchantAtEnd = merchantsAtEnd.find((b) => b.id === merchantToUpdate.id);
-          expect(aMerchantAtEnd.products).toHaveSize(0);
-      });
-  });
-  
-  describe('deleting a blog', () => {
-    beforeEach(async () => {
-      const newUser = {
-        username: 'root',
-        name: 'root',
-        password: 'password',
-      }
-  
-      await api
-        .post('/api/users')
-        .send(newUser)
-  
-      const result = await api
-        .post('/api/login')
-        .send(newUser)
-  
-      headers = {
-        Authorization: `bearer ${result.body.token}`,
-      }
-  
-      const newBlog = {
-        title: 'The best blog ever',
-        author: 'Me',
-        url: 'http://www.cs.utexas.edu/~EWD/transcriptions/EWD08xx/EWD808.html',
-        likes: 12,
-      }
-  
-      await api
-        .post('/api/blogs')
-        .send(newBlog)
-        .set(headers)
-        .expect(201)
-    })
-  
-    test('a blog can be deleted', async () => {
-      const blogsAtStart = await helper.blogsInDb()
-      const blogToDelete = blogsAtStart[blogsAtStart.length - 1]
-      await api
-        .delete(`/api/blogs/${blogToDelete.id}`)
-        .set(headers)
-        .expect(204)
-  
-      const blogsAtEnd = await helper.blogsInDb()
-  
-      expect(blogsAtEnd).toHaveLength(
-        blogsAtStart.length - 1,
-      )
-  
-      const titles = blogsAtEnd.map((r) => r.title)
-  
-      expect(titles).not.toContain(blogToDelete.title)
-    })
-  })
+        const usersAtEnd = await helper.usersInDb();
+        const aUserAtEnd = usersAtEnd.find((b) => b.id === userToUpdate.id);
+        expect(aUserAtEnd.orders).toHaveSize(1);
+    });
+});
 
 afterAll(() => {
     mongoose.connection.close();
