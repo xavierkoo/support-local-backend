@@ -73,7 +73,7 @@ https://support-local.herokuapp.com/api/
 ##### Update merchant products
 **PATCH:** https://support-local.herokuapp.com/api/merchants/:id<br>
 **Send:** merchantId (ObjectId), productId (ObjectId Array)<br>
-**Receive:** Updated Merchant Object,  Response Code - 204|| Exception
+**Receive:** Updated Merchant Object,  Response Code - 204 || Exception
 
 ### Orders
 
