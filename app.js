@@ -4,6 +4,8 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const config = require('./utils/config');
+const middleware = require('./utils/middleware');
+const logger = require('./utils/logger');
 require('express-async-errors');
 
 const app = express();
@@ -14,8 +16,6 @@ const usersRouter = require('./controllers/users');
 const reviewsRouter = require('./controllers/reviews');
 const productsRouter = require('./controllers/products');
 const ordersRouter = require('./controllers/orders');
-const middleware = require('./utils/middleware');
-const logger = require('./utils/logger');
 
 logger.info('connecting to', config.MONGODB_URI);
 
