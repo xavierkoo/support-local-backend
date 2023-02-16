@@ -17,10 +17,9 @@ const reviewsRouter = require('./controllers/reviews');
 const productsRouter = require('./controllers/products');
 const ordersRouter = require('./controllers/orders');
 
-logger.info('connecting to', config.MONGODB_URI);
-
 // connect to mongodb file .env has been gitignored, for Heroku deployment
 // set mongodb URI from dashboard
+logger.info('connecting to', config.MONGODB_URI);
 
 mongoose.connect(config.MONGODB_URI)
     .then(() => {
@@ -30,10 +29,13 @@ mongoose.connect(config.MONGODB_URI)
         logger.error('error connecting to MongoDB:', error.message);
     });
 
+// express middleware functions
 app.use(cors());
 app.use(express.static('build'));
 app.use(express.json());
 app.use(middleware.requestLogger);
+app.use(middleware.unknownEndpoint);
+app.use(middleware.errorHandler);
 
 // use routers
 app.use('/api/users', usersRouter);
@@ -41,8 +43,5 @@ app.use('/api/merchants', merchantsRouter);
 app.use('/api/reviews', reviewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/orders', ordersRouter);
-
-app.use(middleware.unknownEndpoint);
-app.use(middleware.errorHandler);
 
 module.exports = app;
