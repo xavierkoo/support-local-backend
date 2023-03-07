@@ -89,7 +89,7 @@ https://support-local.herokuapp.com/api/
 
 ##### Add new order
 **POST:** https://support-local.herokuapp.com/api/orders<br>
-**Send:** user (ObjectId), orderDate (String), orderStatus (String), products (ObjectId Array), delivaryDate (String)<br>
+**Send:** user (ObjectId), orderDate (String), orderStatus (String), products (ObjectId Array), deliveryDate (String)<br>
 **Receive:** New Order Object Response Code - 201 || Exception
 
 ##### Update order status
