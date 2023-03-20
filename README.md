@@ -25,7 +25,7 @@ Frontend Repository: https://github.com/xavierkoo/support-local-frontend
 git clone git@github.com:xavierkoo/support-local-backend.git
 ```
 
-### Open your terminal in local project, and execute:
+### Open your terminal in the local project root folder, and execute:
 ```
 npm install
 ``` 
