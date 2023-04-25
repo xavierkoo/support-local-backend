@@ -42,6 +42,7 @@ app.use('/api/reviews', reviewsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/orders', ordersRouter);
 
+// error handler and unknown endpoint must be after routers else all requests to endpoint will be unknown endpoint
 app.use(middleware.unknownEndpoint);
 app.use(middleware.errorHandler);
 
