@@ -8,7 +8,7 @@ Support Local is THE one-stop shop for all things local. It compiles all local b
 
 This is the backend repository for the Support Local web application built upon Node.js with RESTful APIs developed using Express. Data for the application is stored on MongoDB. Integration tests are written with Jest.
 
-Main App Link: https://supportlocal.netlify.app/
+Main App Link: https://support-local-frontend.onrender.com/
 
 Frontend Repository: https://github.com/xavierkoo/support-local-frontend
 
@@ -54,122 +54,122 @@ You may make API calls to the server locally via `localhost:3001`.
 # API Documentation
 
 ## Base API URL
-https://support-local.herokuapp.com/api/
+https://support-local-backend.onrender.com/api
 
 ## User Related APIs
 
 ### Merchants
 
 ##### Get all merchants
-**GET:** https://support-local.herokuapp.com/api/merchants<br>
+**GET:** /merchants<br>
 **Send:** NIL<br>
 **Receive:** All Merchant Objects || Response Code - 404
 
 ##### Get specific merchant
-**GET:** https://support-local.herokuapp.com/api/merchants/:id<br>
+**GET:** /merchants/:id<br>
 **Send:** merchantId (ObjectId)<br>
 **Receive:** Specific Merchant Object || Response Code - 404
 
 ##### Update merchant products
-**PATCH:** https://support-local.herokuapp.com/api/merchants/:id<br>
+**PATCH:** /merchants/:id<br>
 **Send:** merchantId (ObjectId), productId (ObjectId Array)<br>
 **Receive:** Updated Merchant Object,  Response Code - 204 || Exception
 
 ### Orders
 
 ##### Get all orders
-**GET:** https://support-local.herokuapp.com/api/orders<br>
+**GET:** /orders<br>
 **Send:** NIL<br>
 **Receive:** All Order Objects || Response Code - 404
 
 ##### Get specific order
-**GET:** https://support-local.herokuapp.com/api/orders/:id<br>
+**GET:** /orders/:id<br>
 **Send:** orderId (ObjectId)<br>
 **Receive:** Specific Order Object || Response Code - 404
 
 ##### Add new order
-**POST:** https://support-local.herokuapp.com/api/orders<br>
+**POST:** /orders<br>
 **Send:** user (ObjectId), orderDate (String), orderStatus (String), products (ObjectId Array), deliveryDate (String)<br>
 **Receive:** New Order Object Response Code - 201 || Exception
 
 ##### Update order status
-**PATCH:** https://support-local.herokuapp.com/api/orders/:id<br>
+**PATCH:** /orders/:id<br>
 **Send:** orderStatus (String)<br>
 **Receive:** Updated Order Object,  Response Code - 204 || Exception
 
 ### Products
 
 ##### Get all products
-**GET:** https://support-local.herokuapp.com/api/products<br>
+**GET:** /products<br>
 **Send:** NIL<br>
 **Receive:** All Product Objects || Response Code - 404
 
 ##### Get specific product
-**GET:** https://support-local.herokuapp.com/api/products/:id<br>
+**GET:** /products/:id<br>
 **Send:** productId (ObjectId)<br>
 **Receive:** Specific Product Object || Response Code - 404
 
 ##### Add new product
-**POST:** https://support-local.herokuapp.com/api/products<br>
+**POST:** /products<br>
 **Send:** name (String), price (Number), specialPrice (Number), category (String), rating (Number), imgUrl (String), numberSold (Number), productDesc (String), productSpec (String Array), merchant (ObjectId), reviews (ObjectId Array)<br>
 **Receive:** New Product Object, Response Code - 201 || Exception
 
 ##### Delete specific product
-**GET:** https://support-local.herokuapp.com/api/products/:id<br>
+**GET:** /products/:id<br>
 **Send:** productId (ObjectId)<br>
 **Receive:** Specific Product Object, Response Code - 204 || Exception
 
 ##### Update product fields
-**PATCH:** https://support-local.herokuapp.com/api/products/:id<br>
+**PATCH:** /products/:id<br>
 **Send:** name (String), price (Number), specialPrice (Number), category (String), rating (Number), imgUrl (String), numberSold (Number), productDesc (String), productSpec (String Array), merchant (ObjectId), reviews (ObjectId Array)<br>
 **Receive:** Updated Order Object,  Response Code - 204 || Exception
 
 ##### Update product with new review
-**PATCH:** https://support-local.herokuapp.com/api/products/:id<br>
+**PATCH:** /products/:id<br>
 **Send:** reviews (ObjectId Array)<br>
 **Receive:** Updated Order Object,  Response Code - 204 || Exception
 
 ### Reviews
 
 ##### Get all reviews
-**GET:** https://support-local.herokuapp.com/api/reviews<br>
+**GET:** /reviews<br>
 **Send:** NIL<br>
 **Receive:** All Review Objects || Response Code - 404
 
 ##### Get specific review
-**GET:** https://support-local.herokuapp.com/api/reviews/:id<br>
+**GET:** /reviews/:id<br>
 **Send:** reviewId (ObjectId)<br>
 **Receive:** Specific Review Object || Response Code - 404
 
 ##### Add new review
-**POST:** https://support-local.herokuapp.com/api/reviews<br>
+**POST:** /reviews<br>
 **Send:** user (ObjectId), product (ObjectId), rating (Number), orderDetails (String)<br>
 **Receive:** New Review Object, Response Code - 201 || Exception
 
 ### Users
 
 ##### Get all users
-**GET:** https://support-local.herokuapp.com/api/users<br>
+**GET:** /users<br>
 **Send:** NIL<br>
 **Receive:** All User Objects || Response Code - 404
 
 ##### Get specific user
-**GET:** https://support-local.herokuapp.com/api/users/:id<br>
+**GET:** /users/:id<br>
 **Send:** userId (ObjectId)<br>
 **Receive:** Specific User Object || Response Code - 404
 
 ##### Add new user
-**POST:** https://support-local.herokuapp.com/api/users<br>
+**POST:** /users<br>
 **Send:** email (String), password (String), profImageUrl (String), reviews (ObjectId Array), orderDetails (ObjectId Array)<br>
 **Receive:** New User Object, Response Code - 201 || Exception
 
 ##### Update user with new order
-**PATCH:** https://support-local.herokuapp.com/api/users/:id<br>
+**PATCH:** /users/:id<br>
 **Send:** orderDetails (ObjectId Array)<br>
 **Receive:** Updated User Object,  Response Code - 204 || Exception
 
 ##### Update user with new review
-**PATCH:** https://support-local.herokuapp.com/api/users/:id<br>
+**PATCH:** /users/:id<br>
 **Send:** reviews (ObjectId Array)<br>
 **Receive:** Updated User Object,  Response Code - 204 || Exception
 
